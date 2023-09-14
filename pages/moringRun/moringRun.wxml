@@ -1,0 +1,55 @@
+<!--pages/moringRun/moringRun.wxml-->
+<view class="container">
+<view style="height:100vh;width:100vw;background-color:rgba(250,250,250,0.69);display: flex;justify-content: center;">
+    <view class="main">
+        <!--view class="flex-style">
+            <view class="flex-item active" bindtouchstart="goToCar">驾车</view>
+            <view class="flex-item" bindtouchstart="goToWalk">步行</view>
+            <view class="flex-item" bindtouchstart="goToBus">公交</view>
+            <view class="flex-item" bindtouchstart="goToRide">骑行</view>
+        </view-->
+        <!--view class="map_box">
+        <map id="navi_map" longitude="{{longitude}}" latitude="{{latitude}}" scale="12" markers="{{markers}}" polyline="{{polyline}}"></map>
+        </view>
+
+        <view class="text_box">
+        <view class="text">{{distance}}</view>
+        <view class="text">{{cost}}</view>
+        <view class="detail_button" bindtouchstart="goDetail">详情</view>
+        </view-->
+        <view style="width: 92vw;margin-left: 0; height: 75vh;border-radius: 15px 15px 0 0;overflow: hidden;background-color: #f5f582;"> 
+          <view style="position: absolute;width: 82vw;height: 90%;left: 5vw;overflow: hidden;border-radius: 30px;top: 3%;box-shadow: 5px 5px 5px rgba(100,100,100,0.8),-5px -5px 5px white;" animation="{{animations_map}}">
+          <map
+            id="myMap"
+            style="width:100%;height:100%"
+            longitude="{{longitude}}" latitude="{{latitude}}"
+            scale='17'
+            bindmarkertap="markertap"
+            markers="{{markers}}"
+            polyline="{{polyline}}"
+            circles="{{circles}}"
+            polygon="{{polyline}}"
+            show-location
+            >
+            <cover-view slot="callout">
+                    <block wx:for="{{customCalloutMarkerIds}}" wx:key="*this">
+                    <cover-view  class="customCallout" marker-id="{{item}}" >
+                        <cover-image class="icon" src="../../static/voice.png"></cover-image>
+                        <cover-view class="content"> 
+                        打卡点
+                        </cover-view>
+                    </cover-view>
+                    </block>
+                </cover-view>
+            </map>
+            </view>
+            <view style="position: absolute;bottom:10vh;left:6vw;height:15vh;width:80vw;background-color: rgba(255,255,255,0.8);border-radius: 30px;">
+            <view style="height:11vh;width:76vw;border-radius:30px;background-color:#81c87499;margin-top:2vh;margin-left:2vw">
+            <text style="color:#f5f582;font-size: 350%;float: left;margin-left:5vw">{{time_mi}}'{{time_sec}}'</text>
+            <button style="height:9vh;width:9vh;border-radius: 50%;float: right;margin-right: 5vw;margin-top:1vh;background-color: #f5f582;" bindtap="startRun"><image src="{{startButtonSrc}}" mode="scaleToFill" style="height: 5vh;width: 4vh;margin-top:1vh;margin-left: {{startButtonLeft}}vh;"></image></button>
+            </view>
+            </view>
+            </view>
+</view> 
+</view>
+</view>
