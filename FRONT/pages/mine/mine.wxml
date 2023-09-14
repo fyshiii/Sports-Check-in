@@ -1,0 +1,36 @@
+<!--pages/mine/mine.wxml-->
+<!--姓名 学号 学校 昵称 院系 性别 身高 体重 锻炼记录 联系客服-->
+<view class="container">
+    <view class="centerContainer">
+        <view style="height: 40vh;width: 90vw;border-radius: 20px;background-color:#FFf600;">
+            <image style="width:150rpx;height: 150rpx;left:6vw;top: 8vw;border-radius: 40rpx;border:10rpx solid white;z-index: 10;position: absolute;" mode="scaleToFill" src="{{image}}"></image>
+            <view style="position: absolute;top:8vw;left:6vw;border-radius: 40rpx;background-color: white;width: 88vw;height: 170rpx;z-index: 1;">
+                <button style="position: absolute;top: 15rpx;left:170rpx;background-color: #FFf600;color: white;height:45rpx;width:100rpx;border-radius: 30rpx;font-size: 100%;padding:0;">姓名</button>
+                <button style="position: absolute;top: 65rpx;left:170rpx;background-color: #FFf600;color: white;height:45rpx;width:100rpx;border-radius: 30rpx;font-size: 100%;padding:0;">学号</button>
+                <button style="position: absolute;top: 115rpx;left:170rpx;background-color: #FFf600;color: white;height:45rpx;width:100rpx;border-radius: 30rpx;font-size: 100%;padding:0;">学校</button>
+
+                <button style="position: absolute;top: 15rpx;left:280rpx;background-color: white;color: rgb(211, 211, 211);height:45rpx;width:auto;border-radius: 30rpx;font-size: 100%;padding:0;padding-left: 5px;padding-right: 5px;">{{name}}</button>
+                <button style="position: absolute;top: 65rpx;left:280rpx;background-color: white;color: rgb(211, 211, 211);height:45rpx;width:auto;border-radius: 30rpx;font-size: 100%;padding:0;padding-left: 5px;padding-right: 5px;">{{number}}</button>
+                <button style="position: absolute;top: 115rpx;left:280rpx;background-color: white;color: rgb(211, 211, 211);height:45rpx;width:auto;border-radius: 30rpx;font-size: 100%;padding:0;padding-left: 5px;padding-right: 5px;">{{school}}</button>
+            </view>
+        </view>
+        <view style="position: absolute;top:20vh;width:84vw;height:70vh;background-color: white;border-radius: 30px;left:8vw">
+            <view wx:for="{{userinfo}}" wx:key="index" style="height: 8vh;margin-top: 2vh;background-color: rgba(245,245,245,0.7);color: grey;width:70vw;margin-left: 7vw;border-radius: 30px">
+                <text style="float: left;margin:0;margin-top: 2vh;font-size: 3vh;margin-left: 5vw;vertical-align: middle;display: flex;">{{item.name}}</text>
+                <text style="float: left;margin:0;margin-top: 2vh;font-size: 3vh;margin-left: 5vw;vertical-align: middle;display: flex">{{item.value}}</text>
+            </view>
+            <button style="margin-top: 2vh;background-color: #FFf600;color: white;width: 70vw;border-radius: 30px;height:8vh;font-size: 3vh;" bindtap="showRecord">锻炼记录</button>
+            <button style="margin-top: 2vh;background-color: #FFf600;color: white;width: 70vw;border-radius: 30px;height:8vh;font-size: 3vh;" bindtap="contactUs">联系客服</button>
+        </view>
+        <view style="overflow: hidden;position: absolute;top:{{record_top}}vh;width:84vw;height:75vh;background-color:#FFf600 ;left:5vw;border-radius: 30px;border:3vw solid white;transition: .5s;">
+            <view style="width: 100%;height:5vh;text-align: center;padding-top: 1vh;;background-color: white;">本学期锻炼记录:{{times}}次</view>
+            <button style="position: absolute;right:2vw;top:3px;height:30px;width: 60px;border-radius: 10px;background-color: rgb(255, 154, 154);" bindtap="closeRecord"></button>
+            <view wx:for="{{ex_record}}" wx:key="{{index}}" style="width: auto;height: 8vh;background-color: white;margin-top: 2vh;border-radius: 20px;white-space: nowrap;overflow: hidden;text-align: left;padding-top: 1%;">
+                <button style="height: 100%;width:auto;color: #81c874;font-size: 115%;padding:5px;display: inline-block;background-color: white;">{{item.date}}</button>
+                <button style="height: 100%;width:auto;color: #81c874;font-size: 115%;padding:5px;display: inline-block;background-color: white;">{{item.type}}</button>
+                <button style="height: 100%;width:auto;color: #81c874;font-size: 115%;padding:5px;display: inline-block;background-color: white;">{{item.time}}</button>
+                <button style="height: 100%;width:auto;color: #81c874;font-size: 115%;padding:5px;display: inline-block;background-color: white;" wx:if="{{item.type == '跑步打卡' }}">{{item.dis}}</button>
+            </view>
+        </view>
+    </view>
+</view>
